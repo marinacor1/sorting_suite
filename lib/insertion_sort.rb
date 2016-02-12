@@ -5,26 +5,33 @@ class InsertionSort
   end
 
   def sort(unsorted) #[2, 3, 1]
-    if @sorted.empty?
-      @sorted << unsorted.first
-      unsorted.delete_at(0)
-    else
-      index = 0
-        while index <= unsorted.length
-      # unsorted.each do |element| #3
-        if unsorted[index] < @sorted[index] #0
-          @sorted.insert(u[index], index)
-          unsorted.delete_at(index)
-        end
-          index +=1
+    binding.pry
+      unsorted.each do |element|
+        if @sorted.empty?
+          @sorted << unsorted.first
+          unsorted.delete_at(0)
+        else
+          num = 0
+          #go through each unsorted element and compare it to each sorted element in ascending order until you find the element that is greater than yours, insert unsorted element into the postion before that correct element
+
+          #enumerate through unsorted
+          #compare unsorted element to each element in sorted
+          #ask: is ue < se?
+          #if so ue goes in front of se
+          #ue is deleted from unsorted
+          # else compare the ue (AT SAME INDEX) to the next se
+          #if none are less than add ue to the end
+          #loop thru the ask portion until you've gone
+          while num < @sorted.length do
+            if unsorted[0] < @sorted[num] #0
+              @sorted.insert(unsorted[index], index)
+              unsorted.delete_at(index)
+            end
+            num +=1
+          end
         end
       end
       @sorted
-    end
-      #sorted is: []
-
-      # unsorted.first compares to each element of @sorted if bigger continues if less stop and insert before
-
-
+  end
 
 end
