@@ -16,5 +16,6 @@ class InsertionSortTest < Minitest::Test
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
 
+ #edge cases: empty array, array of one, array of two, array with mixed character and numbers 
 
 end
