@@ -4,25 +4,27 @@ class InsertionSort
     @sorted = []
   end
 
-  def sort(unsorted_input) #[2, 3, 1]
+  def sort(unsorted) #[2, 3, 1]
     if @sorted.empty?
-      @sorted << unsorted_input.first
-      #[2]
+      @sorted << unsorted.first
+      unsorted.delete_at(0)
     else
-      #unsorted = [, 3, 1]
-      #sorted = [2]
-      #ideal = [1, 2, 3]
-      #does element, index keep element and go through each spot 
-      unsorted_input.each_with_index do |element, index| #3
-        if element < @sorted[index] #0
-          @sorted.insert(element, index)
+      index = 0
+        while index <= unsorted.length
+      # unsorted.each do |element| #3
+        if unsorted[index] < @sorted[index] #0
+          @sorted.insert(u[index], index)
+          unsorted.delete_at(index)
+        end
+          index +=1
         end
       end
+      @sorted
+    end
       #sorted is: []
 
-      # unsorted_input.first compares to each element of @sorted if bigger continues if less stop and insert before
+      # unsorted.first compares to each element of @sorted if bigger continues if less stop and insert before
 
-  end
 
 
 end
