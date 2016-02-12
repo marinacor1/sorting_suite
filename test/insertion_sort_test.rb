@@ -12,7 +12,6 @@ class InsertionSortTest < Minitest::Test
   end
 
   def test_insertion_works_with_letters
-    skip
     sorter = InsertionSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end

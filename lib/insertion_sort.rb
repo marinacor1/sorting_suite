@@ -7,10 +7,13 @@ class InsertionSort
   def sort(unsorted) #[2, 3, 1]
     @sorted << unsorted.first
     unsorted.delete_at(0)
-    binding.pry
+    # binding.pry
+    #TODO theory: it exits out because unsorted has had its contents deleted
+    while unsorted.length > 0 do
       unsorted.each do |element|
         index = 0
-          while index < @sorted.length
+        #TODO exits out of unsorted enumerable before finishing going through the unsorted. unsorted still has one character left. maybe last num 1 doesn't fit while loop parameters
+          while index <= unsorted.length && unsorted.include?(element) do
             if element < @sorted[index]#0
               @sorted.insert(index, element)
               unsorted.delete_at(index)
@@ -18,11 +21,12 @@ class InsertionSort
             elsif @sorted[index] == @sorted.last
               @sorted << element
               unsorted.delete_at(index)
-              #what if element is higher than everything in array? 
+              #what if element is higher than everything in array?
             end
         index +=1
           end
       end
+    end
     @sorted
   end
 
