@@ -11,12 +11,12 @@ class MergeSortTest < Minitest::Test
   end
 
   def test_merge_sort_returns_same_array_if_already_sorted
+    skip
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
   end
 
   def test_merge_sort_sorts_in_ascending_order
-    skip
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end

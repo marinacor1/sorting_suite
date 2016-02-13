@@ -5,12 +5,14 @@ class MergeSort
 
   def sort(unsorted)
     #unsorted.each_slice((unsorted.size/2.0).round).to_a
-
-    binding.pry
+    # binding.pry
     @sorted = unsorted.each_slice((unsorted.size/2)).to_a
     @sorted.each do |pair|
       pair.each_with_index do |num, index|
         next_index = index + 1
+        if pair[next_index].nil?
+          break
+        end
         if pair[next_index] < num
           current = num
           next_num = pair[next_index]
