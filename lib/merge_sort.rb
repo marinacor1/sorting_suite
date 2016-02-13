@@ -5,25 +5,20 @@ class MergeSort
 
   def sort(unsorted)
     #unsorted.each_slice((unsorted.size/2.0).round).to_a
-   #[d, b, c, a]
-    @sorted = unsorted.each_slice((unsorted.size/2)).to_a
-    #[[d,b] [c,a]]
+    #TODO how do I split unsort until everything is two pairs or one
+    unsorted.each_slice(unsorted.length/2) do |half|
+    binding.pry
+      if half.length == 1 || half.length == 2
+        break
+      else
+        @sorted << half.each_slice(half.length/2).to_a
+      end
+    end.to_a
     @sorted.each do |pair|
-      #[[b,d] [a, c]]
         compare_pairs(pair)
     end
-    @sorted.join.chars
-    #[b,d,a,c]
-    #d, a compare & switch
-    #[b,a,d,c]
-    #d, c compare & switch
-    #[b,a,c,d]
-    #middle and front
-    #ac compare and switch, ba compare and switch
-    #b, a compare and switch
-     #sort within a group of four [b, d, a, c]
-        binding.pry
-
+    # @sorted.join.chars
+        # binding.pry
   end
 
   def compare_pairs(pair)
