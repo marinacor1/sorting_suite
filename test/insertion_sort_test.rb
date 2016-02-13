@@ -21,5 +21,6 @@ class InsertionSortTest < Minitest::Test
   end
 
  #edge cases: empty array, array of one, array of two, array with mixed character and numbers
+#edge case test if already sorted
 
 end

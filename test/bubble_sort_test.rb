@@ -74,5 +74,5 @@ class BubbleSortTest < Minitest::Test
     assert_equal array, sorter.sort(["d", "b", "a", "c"])
   end
 
-
+#edge case test if already sorted
 end
