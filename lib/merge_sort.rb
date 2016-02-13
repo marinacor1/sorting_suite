@@ -5,20 +5,38 @@ class MergeSort
 
   def sort(unsorted)
     #unsorted.each_slice((unsorted.size/2.0).round).to_a
-    # binding.pry
+   #[d, b, c, a]
     @sorted = unsorted.each_slice((unsorted.size/2)).to_a
+    #[[d,b] [c,a]]
     @sorted.each do |pair|
-      pair.each_with_index do |num, index|
-        next_index = index + 1
-        if pair[next_index].nil?
-          break
-        end
-        if pair[next_index] < num
-          current = num
-          next_num = pair[next_index]
-          pair[index] = next_num
-          pair[next_index] = current
-        end
+      #[[b,d] [a, c]]
+        compare_pairs(pair)
+    end
+    @sorted.join.chars
+    #[b,d,a,c]
+    #d, a compare & switch
+    #[b,a,d,c]
+    #d, c compare & switch
+    #[b,a,c,d]
+    #middle and front
+    #ac compare and switch, ba compare and switch
+    #b, a compare and switch
+     #sort within a group of four [b, d, a, c]
+        binding.pry
+
+  end
+
+  def compare_pairs(pair)
+    pair.each_with_index do |element, index|
+      next_index = index + 1
+      if pair[next_index].nil?
+        break
+      end
+      if pair[next_index] < element
+        current = element
+        next_element = pair[next_index]
+        pair[index] = next_element
+        pair[next_index] = current
       end
     end
 
