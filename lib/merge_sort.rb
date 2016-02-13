@@ -7,15 +7,28 @@ class MergeSort
     #unsorted.each_slice((unsorted.size/2.0).round).to_a
     #TODO how do I split unsort until everything is two pairs or one
     unsorted.each_slice(unsorted.length/2) do |half|
-    binding.pry
       if half.length == 1 || half.length == 2
         break
       else
+        # binding.pry
         @sorted << half.each_slice(half.length/2).to_a
       end
     end.to_a
-    @sorted.each do |pair|
+    @sorted.each do |group|
+      # binding.pry
+      group.each do |pair|
+        if pair.length == 1
+          break
+        else
         compare_pairs(pair)
+      end
+      #[[[2,4] [6,8], [0]], [[1,5], [3,7], [9]]]
+      #TODO some how get the merged couples to compare with other merged couples (How does this order go?) the first of each group compares and switches.
+      #go backwards: [-2] and [-3] index compare/switch
+      #[-1] and [-3] index compare/ switch
+      #[-3] and [-5] or mid and last compare/ switch
+      #merge loner to group
+      end
     end
     # @sorted.join.chars
         # binding.pry
@@ -49,11 +62,7 @@ end
 #merge the pair
 #if there is one then leave it alone
 #[24806]
-#TODO some how get the merged couples to compare with other merged couples (How does this order go?) the first of each group compares and switches.
-#go backwards: [-2] and [-3] index compare/switch
-#[-1] and [-3] index compare/ switch
-#[-3] and [-5] or mid and last compare/ switch
-#merge loner to group
+
 
 #once each half is sorted completely, compare the first of each and merge them together
 
