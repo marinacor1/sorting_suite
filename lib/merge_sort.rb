@@ -1,4 +1,26 @@
 class MergeSort
+  def initialize
+    @sorted = []
+  end
+
+  def sort(unsorted)
+    #unsorted.each_slice((unsorted.size/2.0).round).to_a
+
+    binding.pry
+    @sorted = unsorted.each_slice((unsorted.size/2)).to_a
+    @sorted.each do |pair|
+      pair.each_with_index do |num, index|
+        next_index = index + 1
+        if pair[next_index] < num
+          current = num
+          next_num = pair[next_index]
+          pair[index] = next_num
+          pair[next_index] = current
+        end
+      end
+    end
+
+  end
 
 end
 
@@ -18,6 +40,6 @@ end
 #[-3] and [-5] or mid and last compare/ switch
 #merge loner to group
 
-#once each half is sorted completely, compare the first of each and merge them together 
+#once each half is sorted completely, compare the first of each and merge them together
 
 #if already sorted, it will just split and then merge

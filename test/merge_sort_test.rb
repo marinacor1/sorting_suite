@@ -9,12 +9,12 @@ class MergeSortTest < Minitest::Test
     sorter = MergeSort.new
     sorter.instance_of? MergeSort
   end
-  def test_merge_sort_returns_same_array_if_already_organized
-    skip
+
+  def test_merge_sort_returns_same_array_if_already_sorted
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
-
   end
+
   def test_merge_sort_sorts_in_ascending_order
     skip
     sorter = MergeSort.new
