@@ -16,7 +16,8 @@ class MergeSort
       end
       @final_sort << sort_group(group.flatten)
     end
-    @final_sort
+    @final_sort = @final_sort[0].zip(@final_sort[1])
+    @final_sort.flatten
   end
 
   def slice_into_pairs(unsorted)
