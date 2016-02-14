@@ -1,36 +1,22 @@
 class MergeSort
   def initialize
     @sorted = []
+    @final_sort = []
   end
 
   def sort(unsorted)
-    binding.pry
     slice_into_pairs(unsorted)
-    @sorted.each do |group| #[[1,5], [3, 7], [9]]
-      #TODO after running the merged group [0,8,6] through the compare_pairs method, the numbers are reorganized to [0,6,8]. However, when coming back to the larger group the next pair is [8,6] and the group is [[2,4], [8,6], [0,[8,6]]]. Theory possibly: the pair [8,6] overrides the work done on the merged group. Is it because the small_group is not known to be a part of the @sorted array?
+    @sorted.each do |group|
       group.each do |pair|
-        if pair.length == 1
+        if pair.length == 1 || pair.nil?
           break
         else
-        compare_pairs(pair)
+        sort_pairs(pair)
         end
-        #TODO is this being called too early?
-        small_group = group[-1].push(group[-2]).flatten #[0, 8, 6]
-        #TODO seems to add this group, maybe this part isn't necessary or just do a uniq
-       #whenver compare_pairs is called, should be a merged group (no brackets inside)
-        compare_pairs(small_group)
-      # group.join.chars #["2", "4", "8", "6", "0"]
-      #need to join the last two and compare, switch
-      #need to join the two groups and compare, switch
       end
-      #[[[2,4] [6,8], [0]], [[1,5], [3,7], [9]]]
-
-      #some how need to get the merged couples to compare with other merged couples (How does this order go?) the first of each group compares and switches.
-      #go backwards: [-2] and [-3] index compare/switch
-      #[-1] and [-3] index compare/ switch
-      #[-3] and [-5] or mid and last compare/ switch
-      #merge loner to group
+      @final_sort << sort_group(group.flatten)
     end
+    @final_sort
   end
 
   def slice_into_pairs(unsorted)
@@ -43,8 +29,7 @@ class MergeSort
     end.to_a
   end
 
-  def compare_pairs(pair)
-    # binding.pry
+  def sort_pairs(pair)
     pair.each_with_index do |element, index|
       next_index = index + 1
       if pair[next_index].nil?
@@ -57,15 +42,30 @@ class MergeSort
         pair[next_index] = current
       end
     end
+  end
 
+  def sort_group(group)
+     counter = 0
+     while counter < (group.length ** 2)  do
+        group.each_with_index do |element, index|
+        next_index = index + 1
+          if group[next_index].nil?
+            next_index = 0
+          else
+            if group[next_index] < element
+              current = element
+              next_num = group[next_index]
+              group[index] = next_num
+              group[next_index] = current
+            end
+          end
+        end
+      counter +=1
+    end
+    group
   end
 
 end
 
-#take the first pair and compare/ switch accordingly
-#merge the pair
-#take the second pair and compare/ switch accordingly
-#merge the pair
-#if there is one then leave it alone
 #once each half is sorted completely, compare the first of each and merge them together
 #if already sorted, it will just split and then merge
