@@ -16,9 +16,7 @@ class MergeSort
       end
       @final_sort << sort_group(group.flatten)
     end
-    first_array = @final_sort[0]
-    second_array = @final_sort[1]
-    sort_two_halves(first_array, second_array)
+    sort_two_halves(@final_sort[0], @final_sort[1])
     @final_sorted = @final_sorted.flatten.uniq.compact
   end
 
