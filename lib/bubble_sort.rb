@@ -19,17 +19,22 @@ class BubbleSort
           next_index = 0
         else
           if bubble_array[next_index] < current_num
-            @swap +=1
-            current = current_num
-            next_num = bubble_array[next_index]
-            bubble_array[index] = next_num
-            bubble_array[next_index] = current
+          swap(current_num, index, bubble_array)
           end
         end
       end
     counter +=1
   end
   bubble_array
+  end
+
+  def swap(current_num, index, bubble_array)
+    next_index = index +1
+    @swap +=1
+    current = current_num
+    next_num = bubble_array[next_index]
+    bubble_array[index] = next_num
+    bubble_array[next_index] = current
   end
 
 
