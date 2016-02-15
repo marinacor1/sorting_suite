@@ -15,6 +15,11 @@ class InsertionSortTest < Minitest::Test
     assert_equal [nil], sorter.sort([])
   end
 
+  def test_insertion_sort_sorts_two_element_array
+    sorter = InsertionSort.new
+    assert_equal [1, 2], sorter.sort([2, 1])
+  end
+
   def test_insertion_works_with_three_item_array
     sorter = InsertionSort.new
     assert_equal ([1, 2, 3]), sorter.sort([2, 3, 1])
