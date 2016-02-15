@@ -14,14 +14,14 @@ class MergeSortTest < Minitest::Test
     sorter = MergeSort.new
     assert_equal [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], sorter.sort([4, 2, 8, 6, 0, 5, 1, 7, 3, 9])
   end
-meta wow: true
+
   def test_merge_sort_sorts_in_ascending_order
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
+meta wow: true
 
   def test_merge_sort_with_an_uneven_array_sorts
-    skip
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d", "e"], sorter.sort(["d", "b", "e", "a", "c"])
   end

@@ -10,7 +10,6 @@ class MergeSort
     @sorted.each do |group|
       group.each do |pair|
         if pair.length == 1 || pair.nil?
-        # break #how do i break from this particular enumerator but not the group one
         else
         sort_pairs(pair)
         end
@@ -20,31 +19,27 @@ class MergeSort
       @final_sort.each do |group|
         sort_group(group)
       end
-    # binding.pry
-    #[["b", "d"], ["a", "c"]]
     @final_sort = @final_sort[0].zip(@final_sort[1])
-     #[["b", "a"], ["d", "c"]]
      @final_sort.each do |pair|
      sort_pairs(pair)
    end
-    @final_sort = @final_sort.flatten
+    @final_sort = @final_sort.flatten.compact
 
   end
 
   def slice_into_pairs(unsorted)
-    unsorted.each_slice(unsorted.length/2) do |half|
+    unsorted.each_slice((unsorted.length/2.0).round) do |half|
       if half.length == 1
         break
       elsif half.length == 2
         @sorted << half
       else
-        @sorted << half.each_slice(half.length/2).to_a
+        @sorted << half.each_slice((unsorted.length/2.0).round).to_a
       end
     end.to_a
   end
 
   def sort_pairs(pair)
-    # binding.pry
     pair.each_with_index do |element, index|
       next_index = index + 1
       if pair[next_index].nil?
