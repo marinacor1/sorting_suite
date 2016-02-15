@@ -34,8 +34,13 @@ class InsertionSortTest < Minitest::Test
     sorter = InsertionSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
-
- #edge cases: empty array, array of one, array of two, array with mixed character and numbers
-#edge case test if already sorted
+meta sort: true
+  def test_insertion_works_with_already_sorted_array
+    #currently skips c
+    #currently causes an infinite loop
+    skip
+    sorter = InsertionSort.new
+    assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
+  end
 
 end

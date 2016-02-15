@@ -5,6 +5,7 @@ class InsertionSort
   end
 
   def sort(unsorted)
+    # binding.pry
     @sorted << unsorted.first
     unsorted.delete_at(0)
     while unsorted.length > 0 do

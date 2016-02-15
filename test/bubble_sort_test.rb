@@ -15,6 +15,16 @@ class BubbleSortTest < Minitest::Test
     assert_equal [], sorter.sort([])
   end
 
+  def test_bubble_sort_sorts_single_element_array
+    sorter = BubbleSort.new
+    assert_equal [1], sorter.sort([1])
+  end
+
+  def test_bubble_sort_sorts_with_two_elements
+    sorter = BubbleSort.new
+    assert_equal [1, 2], sorter.sort([2, 1])
+  end
+
   def test_if_current_num_is_less_than_previous_than_values_swapped
     sorter = BubbleSort.new
     assert_equal [0, 1, 2, 3, 4, 5], sorter.sort([1, 0, 2, 3, 4, 5])
@@ -74,5 +84,10 @@ class BubbleSortTest < Minitest::Test
     assert_equal array, sorter.sort(["d", "b", "a", "c"])
   end
 
-#edge case test if already sorted
+  def test_bubble_sort_sorts_with_already_sorted_array
+    sorter = BubbleSort.new
+    array = ["a", "b", "c", "d"]
+    assert_equal array, sorter.sort(["a", "b", "c", "d"])
+  end
+
 end
