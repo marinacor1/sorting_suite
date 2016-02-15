@@ -5,25 +5,38 @@ class MergeSort
   end
 
   def sort(unsorted)
+    # binding.pry
     slice_into_pairs(unsorted)
     @sorted.each do |group|
       group.each do |pair|
         if pair.length == 1 || pair.nil?
-          break
+        # break #how do i break from this particular enumerator but not the group one
         else
         sort_pairs(pair)
         end
       end
       @final_sort << sort_group(group.flatten)
     end
+      @final_sort.each do |group|
+        sort_group(group)
+      end
+    # binding.pry
+    #[["b", "d"], ["a", "c"]]
     @final_sort = @final_sort[0].zip(@final_sort[1])
-    @final_sort.flatten
+     #[["b", "a"], ["d", "c"]]
+     @final_sort.each do |pair|
+     sort_pairs(pair)
+   end
+    @final_sort = @final_sort.flatten
+
   end
 
   def slice_into_pairs(unsorted)
     unsorted.each_slice(unsorted.length/2) do |half|
-      if half.length == 1 || half.length == 2
+      if half.length == 1
         break
+      elsif half.length == 2
+        @sorted << half
       else
         @sorted << half.each_slice(half.length/2).to_a
       end
@@ -31,6 +44,7 @@ class MergeSort
   end
 
   def sort_pairs(pair)
+    # binding.pry
     pair.each_with_index do |element, index|
       next_index = index + 1
       if pair[next_index].nil?
@@ -67,6 +81,3 @@ class MergeSort
   end
 
 end
-
-#once each half is sorted completely, compare the first of each and merge them together
-#if already sorted, it will just split and then merge
