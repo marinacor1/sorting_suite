@@ -16,26 +16,30 @@ class MergeSort
       end
       @final_sort << sort_group(group.flatten)
     end
-      first_array = @final_sort[0]
-      second_array = @final_sort[1]
-      while first_array.length != 0  || second_array.length != 0 do
-        if first_array[0].nil?
-          @final_sorted << second_array
-          first_array = []
-          second_array = []
-        elsif second_array[0].nil?
-          @final_sorted << first_array
-          second_array = []
-          first_array = []
-        elsif first_array[0] < second_array[0]
-          @final_sorted << first_array[0]
-          first_array.delete_at(0)
-        else
-          @final_sorted << second_array[0]
-          second_array.delete_at(0)
-        end
-      end
+    first_array = @final_sort[0]
+    second_array = @final_sort[1]
+    sort_two_halves(first_array, second_array)
     @final_sorted = @final_sorted.flatten.uniq.compact
+  end
+
+  def sort_two_halves(first_array, second_array)
+    while first_array.length != 0  || second_array.length != 0 do
+      if first_array[0].nil?
+        @final_sorted << second_array
+        first_array = []
+        second_array = []
+      elsif second_array[0].nil?
+        @final_sorted << first_array
+        second_array = []
+        first_array = []
+      elsif first_array[0] < second_array[0]
+        @final_sorted << first_array[0]
+        first_array.delete_at(0)
+      else
+        @final_sorted << second_array[0]
+        second_array.delete_at(0)
+      end
+    end
   end
 
   def slice_into_pairs(unsorted)
