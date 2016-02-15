@@ -6,18 +6,25 @@ class MergeSort
   end
 
   def sort(unsorted)
-    slice_into_pairs(unsorted)
-    @sorted.each do |group|
-      group.each do |pair|
-        if pair.length == 1 || pair.nil?
-        else
-          sort_pairs(pair)
-        end
-      end
-      @final_sort << sort_group(group.flatten)
+    # binding.pry
+    if !unsorted.empty?
+      slice_into_pairs(unsorted)
     end
-    sort_two_halves(@final_sort[0], @final_sort[1])
-    @final_sorted = @final_sorted.flatten.uniq.compact
+    if !@sorted.empty?
+      @sorted.each do |group|
+        group.each do |pair|
+          if pair.length == 1 || pair.nil?
+          else
+            sort_pairs(pair)
+          end
+        end
+        @final_sort << sort_group(group.flatten)
+      end
+    end
+    if !@final_sort.empty?
+      sort_two_halves(@final_sort[0], @final_sort[1])
+    end
+      @final_sorted = @final_sorted.flatten.uniq.compact
   end
 
   def sort_two_halves(first_array, second_array)

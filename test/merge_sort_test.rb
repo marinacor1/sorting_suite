@@ -3,11 +3,17 @@ require './lib/merge_sort'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'pry'
+require 'benchmark'
 
 class MergeSortTest < Minitest::Test
   def test_merge_sort_creates_instance
     sorter = MergeSort.new
     sorter.instance_of? MergeSort
+  end
+
+  def test_merge_sort_sorts_empty_array
+    sorter = MergeSort.new
+    assert_equal [], sorter.sort([])
   end
 
   def test_merge_sort_works_with_10
@@ -29,5 +35,6 @@ class MergeSortTest < Minitest::Test
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
   end
+
 
 end
