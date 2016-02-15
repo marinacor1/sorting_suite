@@ -12,18 +12,22 @@ class InsertionSort
       unsorted.each do |element|
         index = 0
           while index <= unsorted.length && unsorted.include?(element) do
-            if element < @sorted[index]
-              @sorted.insert(index, element)
-              unsorted.delete_at(index)
-            elsif @sorted[index] == @sorted.last
-              @sorted << element
-              unsorted.delete_at(index)
-            end
+            insert(index, element, unsorted)
         index +=1
           end
       end
     end
     @sorted
+  end
+
+  def insert(index, element, unsorted)
+    if element < @sorted[index]
+      @sorted.insert(index, element)
+      unsorted.delete_at(index)
+    elsif @sorted[index] == @sorted.last
+      @sorted << element
+      unsorted.delete_at(index)
+    end
   end
 
 end
