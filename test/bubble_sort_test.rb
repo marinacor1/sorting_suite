@@ -62,7 +62,7 @@ class BubbleSortTest < Minitest::Test
     array = sorter.sort([5, 4, 3, 2, 1, 0])
     assert_equal "Final result : [0, 1, 2, 3, 4, 5] Swaps: 15", sorter.results(array)
   end
-meta three: true 
+
   def test_initial_clean_sort_works
     sorter = BubbleSort.new
     assert_equal [0, 1, 2], sorter.sort([1, 0, 2])
