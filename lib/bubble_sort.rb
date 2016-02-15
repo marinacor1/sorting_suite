@@ -11,8 +11,8 @@ class BubbleSort
   end
 
   def sort(bubble_array)
-   counter = 0
-   while counter < (bubble_array.length ** 2)  do
+    counter = 0
+    while counter < (bubble_array.length + 1)  do
       bubble_array.each_with_index do |current_num, index|
       next_index = index +1
         if bubble_array[next_index].nil?
@@ -24,8 +24,8 @@ class BubbleSort
         end
       end
     counter +=1
-  end
-  bubble_array
+    end
+    bubble_array
   end
 
   def swap(current_num, index, bubble_array)
