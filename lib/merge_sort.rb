@@ -1,12 +1,11 @@
 class MergeSort
   def initialize
     @sorted = []
-    @final_sort = []
+    @middle_sort = []
     @final_sorted = []
   end
 
   def sort(unsorted)
-    # binding.pry
     if !unsorted.empty?
       slice_into_pairs(unsorted)
     end
@@ -18,11 +17,11 @@ class MergeSort
             sort_pairs(pair)
           end
         end
-        @final_sort << sort_group(group.flatten)
+        @middle_sort << sort_group(group.flatten)
       end
     end
-    if !@final_sort.empty?
-      sort_two_halves(@final_sort[0], @final_sort[1])
+    if !@middle_sort.empty?
+      sort_two_halves(@middle_sort[0], @middle_sort[1])
     end
       @final_sorted = @final_sorted.flatten.uniq.compact
   end
