@@ -11,7 +11,7 @@ class MergeSort
       group.each do |pair|
         if pair.length == 1 || pair.nil?
         else
-        sort_pairs(pair)
+          sort_pairs(pair)
         end
       end
       @final_sort << sort_group(group.flatten)
@@ -19,13 +19,14 @@ class MergeSort
       first_array = @final_sort[0]
       second_array = @final_sort[1]
       while first_array.length != 0  || second_array.length != 0 do
-        # binding.pry
-        if (first_array.length == 1 && second_array.empty?) || (first_array.empty? && second_array.length == 1)
-          binding.pry
-          @final_sorted << first_array
+        if first_array[0].nil?
           @final_sorted << second_array
-          first_array.delete_at(0)
-          second_array.delete_at(0)
+          first_array = []
+          second_array = []
+        elsif second_array[0].nil?
+          @final_sorted << first_array
+          second_array = []
+          first_array = []
         elsif first_array[0] < second_array[0]
           @final_sorted << first_array[0]
           first_array.delete_at(0)

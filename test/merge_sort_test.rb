@@ -9,7 +9,7 @@ class MergeSortTest < Minitest::Test
     sorter = MergeSort.new
     sorter.instance_of? MergeSort
   end
-meta boom: true
+
   def test_merge_sort_works_with_10
     sorter = MergeSort.new
     assert_equal [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], sorter.sort([4, 2, 8, 6, 0, 5, 1, 7, 3, 9])
@@ -24,7 +24,6 @@ meta boom: true
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d", "e"], sorter.sort(["d", "b", "e", "a", "c"])
   end
-meta wow: true
 
   def test_merge_sort_returns_same_array_if_already_sorted
     sorter = MergeSort.new
