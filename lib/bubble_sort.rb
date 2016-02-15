@@ -13,14 +13,14 @@ class BubbleSort
   def sort(bubble_array)
    counter = 0
    while counter < (bubble_array.length ** 2)  do
-      bubble_array.each_with_index do |bubble, index|
+      bubble_array.each_with_index do |current_num, index|
       next_index = index +1
         if bubble_array[next_index].nil?
           next_index = 0
         else
-          if bubble_array[next_index] < bubble
+          if bubble_array[next_index] < current_num
             @swap +=1
-            current = bubble
+            current = current_num
             next_num = bubble_array[next_index]
             bubble_array[index] = next_num
             bubble_array[next_index] = current

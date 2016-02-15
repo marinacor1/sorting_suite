@@ -2,14 +2,14 @@ class MergeSort
   def initialize
     @sorted = []
     @middle_sort = []
-    @final_sorted = []
+    @final_sort = []
   end
 
   def sort(unsorted)
-    if !unsorted.empty?
+    if unsorted.length >= 2
       slice_into_pairs(unsorted)
     end
-    if !@sorted.empty?
+    if @sorted.length >= 2
       @sorted.each do |group|
         group.each do |pair|
           if pair.length == 1 || pair.nil?
@@ -20,27 +20,29 @@ class MergeSort
         @middle_sort << sort_group(group.flatten)
       end
     end
-    if !@middle_sort.empty?
+    if @middle_sort.length >= 2
       sort_two_halves(@middle_sort[0], @middle_sort[1])
+    else
+      @final_sort << unsorted
     end
-      @final_sorted = @final_sorted.flatten.uniq.compact
+      @final_sort = @final_sort.flatten.uniq.compact
   end
 
   def sort_two_halves(first_array, second_array)
     while first_array.length != 0  || second_array.length != 0 do
       if first_array[0].nil?
-        @final_sorted << second_array
+        @final_sort << second_array
         first_array = []
         second_array = []
       elsif second_array[0].nil?
-        @final_sorted << first_array
+        @final_sort << first_array
         second_array = []
         first_array = []
       elsif first_array[0] < second_array[0]
-        @final_sorted << first_array[0]
+        @final_sort << first_array[0]
         first_array.delete_at(0)
       else
-        @final_sorted << second_array[0]
+        @final_sort << second_array[0]
         second_array.delete_at(0)
       end
     end

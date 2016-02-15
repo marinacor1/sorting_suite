@@ -16,6 +16,11 @@ class MergeSortTest < Minitest::Test
     assert_equal [], sorter.sort([])
   end
 
+  def test_merge_sort_sorts_with_one_element
+    sorter = MergeSort.new
+    assert_equal [1], sorter.sort([1])
+  end
+
   def test_merge_sort_works_with_10
     sorter = MergeSort.new
     assert_equal [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], sorter.sort([4, 2, 8, 6, 0, 5, 1, 7, 3, 9])
