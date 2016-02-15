@@ -2,10 +2,10 @@ class MergeSort
   def initialize
     @sorted = []
     @final_sort = []
+    @final_sorted = []
   end
 
   def sort(unsorted)
-    # binding.pry
     slice_into_pairs(unsorted)
     @sorted.each do |group|
       group.each do |pair|
@@ -16,15 +16,25 @@ class MergeSort
       end
       @final_sort << sort_group(group.flatten)
     end
-      @final_sort.each do |group|
-        sort_group(group)
+      first_array = @final_sort[0]
+      second_array = @final_sort[1]
+      while first_array.length != 0  || second_array.length != 0 do
+        # binding.pry
+        if (first_array.length == 1 && second_array.empty?) || (first_array.empty? && second_array.length == 1)
+          binding.pry
+          @final_sorted << first_array
+          @final_sorted << second_array
+          first_array.delete_at(0)
+          second_array.delete_at(0)
+        elsif first_array[0] < second_array[0]
+          @final_sorted << first_array[0]
+          first_array.delete_at(0)
+        else
+          @final_sorted << second_array[0]
+          second_array.delete_at(0)
+        end
       end
-    @final_sort = @final_sort[0].zip(@final_sort[1])
-     @final_sort.each do |pair|
-     sort_pairs(pair)
-   end
-    @final_sort = @final_sort.flatten.compact
-
+    @final_sorted = @final_sorted.flatten.uniq.compact
   end
 
   def slice_into_pairs(unsorted)
