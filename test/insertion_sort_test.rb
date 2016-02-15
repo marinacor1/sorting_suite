@@ -10,6 +10,11 @@ class InsertionSortTest < Minitest::Test
     assert sorter.instance_of? InsertionSort
   end
 
+  def test_insertion_sort_can_sort_empty_array
+    sorter = InsertionSort.new
+    assert_equal [nil], sorter.sort([])
+  end
+
   def test_insertion_works_with_three_item_array
     sorter = InsertionSort.new
     assert_equal ([1, 2, 3]), sorter.sort([2, 3, 1])
