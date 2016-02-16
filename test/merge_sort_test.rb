@@ -20,7 +20,7 @@ class MergeSortTest < Minitest::Test
     sorter = MergeSort.new
     assert_equal [1], sorter.sort([1])
   end
-
+meta dance: true
   def test_merge_sort_works_with_10
     sorter = MergeSort.new
     assert_equal [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], sorter.sort([4, 2, 8, 6, 0, 5, 1, 7, 3, 9])
@@ -40,6 +40,5 @@ class MergeSortTest < Minitest::Test
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
   end
-
 
 end
