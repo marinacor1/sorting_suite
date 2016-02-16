@@ -35,5 +35,14 @@ class InsertionSortTest < Minitest::Test
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
 
+  def test_insertion_sort_benchmark
+    start = Time.now
+    100.times do
+      sorter = MergeSort.new
+      assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
+    end
+    puts "Time for Insertion Sort: #{Time.now - start}s"
+  end
+
 
 end

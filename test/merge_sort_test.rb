@@ -41,4 +41,23 @@ class MergeSortTest < Minitest::Test
     assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
   end
 
+  def test_merge_sort_sorts_with_doubles_though_eleminating_second
+   sorter = MergeSort.new
+   assert_equal [1, 3, 4, 5], sorter.sort([3, 3, 4, 5, 1])
+  end
+
+  def test_merge_sort_works_with_lowest_at_end
+    sorter = MergeSort.new
+    assert_equal [1,3,4,5], sorter.sort([3, 4, 5, 1])
+  end
+
+  def test_merge_sort_benchmark
+    start = Time.now
+    100.times do
+      sorter = MergeSort.new
+      assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
+    end
+    puts "Time for Merge Sort: #{Time.now - start}s"
+  end
+
 end

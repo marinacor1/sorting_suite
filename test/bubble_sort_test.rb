@@ -90,4 +90,13 @@ class BubbleSortTest < Minitest::Test
     assert_equal array, sorter.sort(["a", "b", "c", "d"])
   end
 
+  def test_bubble_sort_benchmark
+    start = Time.now
+    100.times do
+      sorter = BubbleSort.new
+      assert_equal ["a", "b", "c", "d"], sorter.sort(["a", "b", "c", "d"])
+    end
+    puts "Time for Bubble Sort: #{Time.now - start}s"
+  end
+
 end

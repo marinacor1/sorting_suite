@@ -11,6 +11,9 @@ class MergeSort
     end
     if @sorted.length >= 2
       @sorted.each do |group|
+        if group.length == 2
+          group = @sorted
+        end
         group.each do |pair|
           if pair.length == 1 || pair.nil?
           else
