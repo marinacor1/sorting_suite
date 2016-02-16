@@ -77,7 +77,7 @@ class MergeSort
 
   def sort_group(group)
      counter = 0
-     while counter < (group.length ** 2)  do
+     while counter < (group.length + 1)  do
         group.each_with_index do |element, index|
         next_index = index + 1
           if group[next_index].nil?
