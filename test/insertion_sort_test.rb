@@ -30,6 +30,11 @@ class InsertionSortTest < Minitest::Test
     assert_equal ([1, 2, 3]), sorter.sort([2, 3, 1])
   end
 
+  def test_works_with_an_uneven_array
+    sorter = InsertionSort.new
+    assert_equal ([1, 2, 3, 4, 5]), sorter.sort([3, 2, 5, 4, 1])
+  end
+
   def test_insertion_works_with_letters
     sorter = InsertionSort.new
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])

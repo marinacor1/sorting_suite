@@ -20,10 +20,10 @@ class InsertionSort
   end
 
   def insert(index, element, unsorted)
-    if element < @sorted[index]
+    if element <= @sorted[index]
       @sorted.insert(index, element)
       unsorted.delete_at(index)
-    elsif @sorted[index] == @sorted.last
+    else
       @sorted << element
       unsorted.delete_at(index)
     end
