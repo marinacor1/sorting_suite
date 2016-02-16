@@ -57,27 +57,6 @@ class BubbleSortTest < Minitest::Test
     assert_equal "Final result : [0, 1, 2, 3, 4, 5] Swaps: 1", sorter.results(array)
   end
 
-  def test_result_works_with_more_swaps
-    sorter = BubbleSort.new
-    array = sorter.sort([5, 4, 3, 2, 1, 0])
-    assert_equal "Final result : [0, 1, 2, 3, 4, 5] Swaps: 15", sorter.results(array)
-  end
-
-  def test_initial_clean_sort_works
-    sorter = BubbleSort.new
-    assert_equal [0, 1, 2], sorter.sort([1, 0, 2])
-  end
-
-  def test_sort_works_with_two_swaps
-    sorter = BubbleSort.new
-    assert_equal [0, 1, 2, 3, 4, 5], sorter.sort([1, 0, 2, 4, 3, 5])
-  end
-
-  def test_sort_works_with_complex_swaps
-    sorter = BubbleSort.new
-    assert_equal [0, 1, 3, 4, 5], sorter.sort([4, 3, 5, 0, 1])
-  end
-
   def test_bubble_sort_works_with_letters
     sorter = BubbleSort.new
     array = ["a", "b", "c", "d"]
