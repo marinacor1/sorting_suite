@@ -1,5 +1,5 @@
-gem 'minitest', '~> 5.2'        # => true
-require './lib/merge_sort'      # ~> LoadError: cannot load such file -- ./lib/merge_sort
+gem 'minitest', '~> 5.2'
+require './lib/merge_sort'
 require './lib/insertion_sort'
 require './lib/bubble_sort'
 require 'minitest/autorun'
@@ -36,14 +36,3 @@ class SortingSuiteTest < Minitest::Test
   end
 
 end
-
-benchmark = SortingSuite::Benchmark.new
-
-benchmark.time(SortingSuite::InsertionSort, [3,3,4,5,1])
-
-# ~> LoadError
-# ~> cannot load such file -- ./lib/merge_sort
-# ~>
-# ~> /Users/marinacorona/.rvm/rubies/ruby-2.2.1/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
-# ~> /Users/marinacorona/.rvm/rubies/ruby-2.2.1/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
-# ~> /Users/marinacorona/Turing/1602_Module1/sorting_suite/test/sorting_suite_benchmark.rb:2:in `<main>'
