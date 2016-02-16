@@ -6,7 +6,6 @@ class InsertionSort
 
   def sort(unsorted)
     @sorted << unsorted.shift
-    # binding.pry
     while unsorted.length > 0 do
         index = 0
       unsorted.each do |element|
