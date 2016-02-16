@@ -5,8 +5,8 @@ class InsertionSort
   end
 
   def sort(unsorted)
-    @sorted << unsorted.first
-    unsorted.delete_at(0)
+    @sorted << unsorted.shift
+    # binding.pry
     while unsorted.length > 0 do
         index = 0
       unsorted.each do |element|
