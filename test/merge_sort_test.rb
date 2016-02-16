@@ -31,7 +31,7 @@ class MergeSortTest < Minitest::Test
     assert_equal ["a", "b", "c", "d"], sorter.sort(["d", "b", "a", "c"])
   end
 
-  def test_merge_sort_with_an_uneven_array_sorts
+  def test_merge_sort_sorts_with_an_uneven_array
     sorter = MergeSort.new
     assert_equal ["a", "b", "c", "d", "e"], sorter.sort(["d", "b", "e", "a", "c"])
   end
